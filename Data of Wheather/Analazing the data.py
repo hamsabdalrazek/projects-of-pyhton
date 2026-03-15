@@ -21,6 +21,7 @@ df = pd.DataFrame({
     'temperature_2m_max':data['daily']['temperature_2m_max'],
     'temperature_2m_min':data['daily']['temperature_2m_min']
 })
+df['time'] = pd.to_datetime(df['time'])
 df['average'] = (df['temperature_2m_max'] + df['temperature_2m_min']) / 2
 plt.figure(figsize=(10,6))
 plt.plot(df['time'],df['temperature_2m_max'],marker ='o',label='temperature_2m_max', color = 'blue')
@@ -28,5 +29,19 @@ plt.plot(df['time'],df['temperature_2m_min'],marker ='o',label='temperature_2m_m
 plt.plot(df['time'],df['average'],marker ='o',label='average', color = 'green')
 plt.tight_layout()
 print(f"Average is {df['average'].mean():.1f}")
+plt.title("Paris Temperature Last 7 Days")
+plt.xlabel('time')
+plt.ylabel('Temperature')
+plt.legend()
+plt.show()
+plt.bar(df['time'],df['temperature_2m_max'],color = 'skyblue', label ='Max-TEM')
+plt.xticks(rotation=45)
+plt.legend()
+plt.title('Max-Temperature')
+plt.show()
+plt.bar(df['time'],df['temperature_2m_min'],color = 'red',label ='Min-TEM')
+plt.xticks(rotation=45)
+plt.legend()
+plt.title('Min-Temperature')
 plt.show()
 
