@@ -44,4 +44,3 @@ plt.xticks(rotation=45)
 plt.legend()
 plt.title('Min-Temperature')
 plt.show()
-
